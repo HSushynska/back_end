@@ -1,9 +1,8 @@
 package org.example;
 
 public class Warehouse {
-
     private String title;
-    private int value; // koл. коробок, которое перенесли
+    private int value;
     private Object lock= new Object();
 
     public Warehouse(String title) {
@@ -18,9 +17,11 @@ public class Warehouse {
                 '}';
     }
 
-    public void addValue(int value) {
+    public  void addValue(int value){
         synchronized (lock) {
             this.value += value;
         }
     }
+
 }
+
