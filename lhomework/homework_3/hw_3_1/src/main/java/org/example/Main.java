@@ -11,17 +11,16 @@ package org.example;
 
 public class Main {
     private static final int N_BOX = 1000;
-    private static final int CAPACITY = 1;
+    private static final int CAPACITY = 2;
 
     public static void main(String[] args) {
 
-        Warehouse warehouse1 = new Warehouse("#1");
-        Warehouse warehouse2 = new Warehouse("#2");
+        Warehouse[] warehouses = {new Warehouse("#1"), new Warehouse("#2")};
 
         Thread[] loaders = {
-                new Thread(new Loader("Jack",N_BOX,CAPACITY,warehouse1)),
-                new Thread(new Loader("John",N_BOX,CAPACITY,warehouse2)),
-                new Thread(new Loader("Nick",N_BOX,CAPACITY,warehouse1)),
+                new Thread(new Loader("Jack",N_BOX,CAPACITY,warehouses)),
+                new Thread(new Loader("John",N_BOX,CAPACITY,warehouses)),
+                new Thread(new Loader("Nick",N_BOX,CAPACITY,warehouses)),
         };
 
         for (Thread thread : loaders){
@@ -36,8 +35,8 @@ public class Main {
             }
         }
 
-
-        System.out.println(warehouse1);
-        System.out.println(warehouse2);
+        for (Warehouse warehouse:warehouses) {
+            System.out.println(warehouse);
+        }
     }
 }

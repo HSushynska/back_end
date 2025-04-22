@@ -2,8 +2,7 @@ package org.example;
 
 public class Warehouse {
     private String title;
-    private int value1;
-    private int value2;
+    private int value;
     private Object lock= new Object();
 
     public Warehouse(String title) {
@@ -13,20 +12,14 @@ public class Warehouse {
     @Override
     public String toString() {
         return "Warehouse{" +
-                "title='" + title + " warehouse1 " + value1 + "warehouse2 "+ value2;
-
+                "title='" + title + '\'' +
+                ", value=" + value +
+                '}';
     }
 
-
-    public  void addValue1(int value){
+    public  void addValue(int value){
         synchronized (lock) {
-            this.value1 += value1;
-        }
-    }
-
-    public  void addValue2(int value){
-        synchronized (lock) {
-            this.value2 += value2;
+            this.value += value;
         }
     }
 
