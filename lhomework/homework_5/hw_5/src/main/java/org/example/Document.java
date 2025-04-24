@@ -28,7 +28,6 @@ class Document {
         toLock.add(this);
         toLock.sort(Comparator.comparingInt(Document::getId));
 
-
         System.out.println(Thread.currentThread().getName() + " редактирует " + name);
         for (Document doc : toLock) {
             synchronized (doc) {
@@ -37,8 +36,6 @@ class Document {
             }
         }
     }
-
-
 
     public String getName() {
         return name;
