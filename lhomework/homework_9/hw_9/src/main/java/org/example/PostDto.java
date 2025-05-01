@@ -10,9 +10,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PostDto {
-    private int id;
-    private String comments;
     private int userId;
+    private int id;
     private String title;
-    private String body;
+    //  private String body;
 }
+
