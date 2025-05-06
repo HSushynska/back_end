@@ -12,6 +12,5 @@ import java.util.Map;
 
 
 public class TagDto {
-    private Map<String, Double> coordinates;
     private String data;
 }
