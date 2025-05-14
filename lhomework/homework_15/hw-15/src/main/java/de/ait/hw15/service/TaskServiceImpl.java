@@ -1,7 +1,9 @@
 package de.ait.hw15.service;
 
+import de.ait.hw15.dto.ProgrammerResponseDto;
 import de.ait.hw15.dto.TaskRequestDto;
 import de.ait.hw15.dto.TaskResponseDto;
+import de.ait.hw15.model.Programmer;
 import de.ait.hw15.model.Task;
 import de.ait.hw15.repository.TaskRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ public  class TaskServiceImpl implements TaskService {
     @Override
     public TaskResponseDto save(TaskRequestDto dto) {
         Task task = new Task(null, dto.getDescription(), dto.getPriority());
-        return taskRepository.save(task);
+        Task saved = taskRepository.save(task);
+        return new TaskResponseDto(saved.getId(), saved.getDescription(), saved.getPriority());
     }
 }

@@ -21,9 +21,9 @@ public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
         map.put(1L, new Programmer(1L,"Jack") );
         map.put(2L, new Programmer(2L,"Nick") );
         map.put(3L, new Programmer(3L,"John") );
-        addTaskToProgrammer(1l,1l);
-        addTaskToProgrammer(1l,2l);
-        addTaskToProgrammer(2l,3l);
+        addTaskToProgrammer(1L,1L);
+        addTaskToProgrammer(1L,2L);
+        addTaskToProgrammer(2L,3L);
 
     }
 

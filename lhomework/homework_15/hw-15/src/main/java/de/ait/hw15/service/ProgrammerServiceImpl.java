@@ -16,6 +16,8 @@ private final ProgrammerRepository programmerRepository;
     @Override
     public ProgrammerResponseDto save(ProgrammerRequestDto dto) {
         Programmer programmer= new Programmer(null, dto.getName());
-        return programmerRepository.save( programmer);
+        Programmer saved = programmerRepository.save(programmer);
+        return new ProgrammerResponseDto(saved.getId(), saved.getName(), saved.getTasks());
+
     }
 }
