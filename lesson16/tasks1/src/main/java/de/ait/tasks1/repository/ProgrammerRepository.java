@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 public interface ProgrammerRepository {
     List<Programmer> findAll();
     Programmer findById(Long id);

@@ -6,11 +6,11 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@ToString
+@Setter
 public class ProgrammerRequestDto {
     private String name;
+
 }

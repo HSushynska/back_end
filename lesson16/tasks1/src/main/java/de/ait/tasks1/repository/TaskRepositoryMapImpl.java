@@ -37,17 +37,14 @@ public class TaskRepositoryMapImpl implements TaskRepository{
         map.put(5L, new Task(5L,"Task 5", Priority.LOW));
     }
 
-
     @Override
     public List<Task> findAll() {
         return map.values().stream().toList();
     }
 
     @Override
+    // return или значение Task или null
     public Task findById(Long id) {
-        if (id<1 || id>lastId){
-            throw new RuntimeException("id not found"); //IdNotFoundException
-        }
         return map.get(id);
     }
 
@@ -63,9 +60,9 @@ public class TaskRepositoryMapImpl implements TaskRepository{
         return task;
     }
 
-
-
 }
+
+
 
 
 

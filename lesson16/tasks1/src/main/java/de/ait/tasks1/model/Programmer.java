@@ -6,13 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
-@EqualsAndHashCode
+@Setter
 public class Programmer {
-    @Setter
     private Long id;
     private String name;
     private Set<Task> tasks;

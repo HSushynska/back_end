@@ -1,5 +1,6 @@
 package de.ait.tasks1.service;
 
+import de.ait.tasks1.dto.TaskRequestDto;
 import de.ait.tasks1.dto.TaskResponseDto;
 import de.ait.tasks1.mappers.TaskMapper;
 import de.ait.tasks1.model.Task;
@@ -16,35 +17,28 @@ public class TaskServiceImpl implements TaskService{
     private final TaskRepository repository;
     private final TaskMapper mapper;
 
-
-/*
     @Override
-    public List<TaskResponseDto> getAllTasks() {
-        List<Task> taskList = repository.findAll();
-        return taskList.stream()
-                .map(TaskServiceImpl::getTaskResponseDto)
-                .toList();
-    }
-*/
-
-    @Override
+    // return или значение TaskResponseDto или null
     public List<TaskResponseDto> getAllTasks() {
         return mapper.toResponseDtoList(repository.findAll());
     }
 
-    /*
     @Override
-    public List<TaskResponseDto> getAllTasks() {
-        List<Task> taskList = repository.findAll();
-        return taskList.stream()
-                .map(t->mapper.toResponseDto(t))
-                .toList();
+    public TaskResponseDto getTaskById(Long id) {
+        return mapper.toResponseDto(repository.findById(id));
     }
-*/
 
-
-    private static TaskResponseDto getTaskResponseDto(Task t) {
-        return new TaskResponseDto(t.getId(), t.getDescription(), t.getPriority());
+    @Override
+    public TaskResponseDto createTask(TaskRequestDto taskDto) {
+        Task task = mapper.fromRequestDto(taskDto);
+        Task savedTask = repository.save(task);
+        return mapper.toResponseDto(savedTask);
     }
+
+    @Override
+    public TaskResponseDto deleteTask(Long id) {
+        return mapper.toResponseDto(repository.delete(id));
+    }
+
 }
 

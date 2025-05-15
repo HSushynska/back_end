@@ -2,7 +2,6 @@ package de.ait.tasks1.dto;
 
 // Task {id, description (описание), priority (приоритет)}
 
-
 import de.ait.tasks1.model.Priority;
 import lombok.*;
 
@@ -13,7 +12,6 @@ import lombok.*;
 public class TaskRequestDto {
     private String description;
     private Priority priority;
-
 
 }
 

@@ -10,6 +10,5 @@ public interface TaskRepository {
     Task delete(Long id);
     Task save(Task task);
 
-
 }
 

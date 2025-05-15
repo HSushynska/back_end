@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 public class TaskRepositoryListImpl implements TaskRepository{
     @Override
     public List<Task> findAll() {

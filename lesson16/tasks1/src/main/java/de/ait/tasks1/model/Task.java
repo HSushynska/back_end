@@ -9,12 +9,11 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of="id")
+@Setter
 public class Task {
-    @Setter
     private Long id;
     private String description;
     private Priority priority;
-
 
 }
 

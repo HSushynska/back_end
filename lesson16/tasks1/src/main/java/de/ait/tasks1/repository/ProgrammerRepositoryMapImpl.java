@@ -15,7 +15,6 @@ import java.util.Map;
 
 @Repository
 
-
 public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
     private final TaskRepository taskRepository;
     private static Long lastID = 3L;
@@ -26,15 +25,10 @@ public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
         map.put(2L, new Programmer(2L,"Nick") );
         map.put(3L, new Programmer(3L,"John") );
         this.taskRepository = taskRepository;
-        addTaskToProgrammer(1L,1L);
-        addTaskToProgrammer(1L,2L);
-        addTaskToProgrammer(2L,3L);
+        addTaskToProgrammer(1l,1l);
+        addTaskToProgrammer(1l,2l);
+        addTaskToProgrammer(2l,3l);
     }
-
-
-
-
-
 
     @Override
     public List<Programmer> findAll() {
@@ -43,13 +37,7 @@ public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
 
     @Override
     public Programmer findById(Long id) {
-
-        Programmer programmer = map.get(id);
-        if (programmer==null){
-            throw  new RuntimeException("Programmer not found");
-        } else {
-            return programmer;
-        }
+        return map.get(id);
     }
 
     @Override
@@ -87,4 +75,3 @@ public class ProgrammerRepositoryMapImpl implements ProgrammerRepository {
         return new ArrayList<>(findById(id).getTasks());
     }
 }
-

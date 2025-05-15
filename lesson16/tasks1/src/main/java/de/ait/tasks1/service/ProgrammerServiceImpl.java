@@ -1,43 +1,42 @@
 package de.ait.tasks1.service;
 
+import de.ait.tasks1.dto.ProgrammerRequestDto;
 import de.ait.tasks1.dto.ProgrammerResponseDto;
 import de.ait.tasks1.dto.TaskResponseDto;
 import de.ait.tasks1.mappers.ProgrammerMapper;
 import de.ait.tasks1.model.Programmer;
 import de.ait.tasks1.model.Task;
 import de.ait.tasks1.repository.ProgrammerRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 
 public class ProgrammerServiceImpl implements ProgrammerService {
-    private final ProgrammerRepository programmerRepository;
-    private final ProgrammerMapper programmerMapper;
-
+    private final ProgrammerRepository repository;
+    private final ProgrammerMapper mapper;
 
     @Override
-    public List<ProgrammerResponseDto> getAllProgrammers() {
-        return programmerMapper.toResponseDtoList(programmerRepository.findAll());
+    public List<ProgrammerResponseDto> getAllProgrammer() {
+        return mapper.toResponseDtoList(repository.findAll());
     }
 
     @Override
-    public ProgrammerResponseDto getProgrammer(long id) {
+    public ProgrammerResponseDto getProgrammerById(Long id) {
         return null;
     }
 
     @Override
-    public ProgrammerResponseDto createProgrammer(Programmer programmer) {
+    public ProgrammerResponseDto createTask(ProgrammerRequestDto taskRequestDto) {
         return null;
     }
 
-    private static ProgrammerResponseDto getProgrammerResponseDto(Programmer p)
-    {
-        return new ProgrammerResponseDto(p.getId(), p.getName(), p.getTasks());
+    @Override
+    public ProgrammerResponseDto deleteTask(Long id) {
+        return null;
     }
-
-
 }
