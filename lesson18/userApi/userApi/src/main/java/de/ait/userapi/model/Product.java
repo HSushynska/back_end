@@ -4,14 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-// lombok
-@AllArgsConstructor
+
+
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-
-//DB
-@Entity  // таблица
+@Entity
 @Table(name = "products")
 public class Product {
     @Id

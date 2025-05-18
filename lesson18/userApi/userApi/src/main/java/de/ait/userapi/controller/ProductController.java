@@ -2,6 +2,7 @@ package de.ait.userapi.controller;
 
 import de.ait.userapi.dto.ProductRequestDto;
 import de.ait.userapi.dto.ProductResponseDto;
+import de.ait.userapi.model.Product;
 import de.ait.userapi.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,27 +12,24 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-/*
-(получить все продукты, получить продукт по id, сохранить продукт в бахе
- */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/products") //общий путь
+@RequestMapping("/products")
 public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public ResponseEntity<List<ProductResponseDto>> getProducts() {
+    public ResponseEntity<List<ProductResponseDto>> getProducts(){
         return ResponseEntity.ok().body(service.getProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> getProducts(@PathVariable("id") Long id) {
+    public ResponseEntity<ProductResponseDto> getProducts(@PathVariable("id") Long id){
         return ResponseEntity.ofNullable(service.getProductById(id));
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> addProduct(@RequestBody ProductRequestDto dto) {
+    public ResponseEntity<ProductResponseDto> addProduct(@RequestBody ProductRequestDto dto){
         ProductResponseDto saved = service.save(dto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -41,4 +39,6 @@ public class ProductController {
         return ResponseEntity.created(location).body(saved);
 
     }
+
+
 }

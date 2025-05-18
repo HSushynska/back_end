@@ -1,12 +1,17 @@
 package de.ait.userapi.dto;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor
+
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class ProductResponseDto {
     private Long id;

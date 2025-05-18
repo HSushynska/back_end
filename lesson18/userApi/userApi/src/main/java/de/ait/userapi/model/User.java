@@ -6,21 +6,18 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-@Setter
 @ToString
 
 @Entity
-@Table(name = "users")
+@Table(name = "t_user")
 public class User {
+
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
-    @Column(name = "name")
+    //@Column(name = "user_name")
     private String name;
-    @Column(name = "email")
     private String email;
-    @Column(name = "password")
     private String password;
-
 }

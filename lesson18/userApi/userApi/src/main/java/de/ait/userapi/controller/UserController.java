@@ -3,7 +3,6 @@ package de.ait.userapi.controller;
 import de.ait.userapi.dto.UserRequestDto;
 import de.ait.userapi.dto.UserResponseDto;
 import de.ait.userapi.model.User;
-import de.ait.userapi.repository.UserDB;
 import de.ait.userapi.repository.UserRepository;
 import de.ait.userapi.service.UserService;
 import lombok.AllArgsConstructor;
