@@ -11,3 +11,4 @@ public interface ProductService {
     ProductResponseDto getProductById(Long id);
     ProductResponseDto save(ProductRequestDto dto);
 }
+

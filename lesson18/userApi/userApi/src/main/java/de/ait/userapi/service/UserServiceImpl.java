@@ -2,6 +2,7 @@ package de.ait.userapi.service;
 
 import de.ait.userapi.dto.UserRequestDto;
 import de.ait.userapi.dto.UserResponseDto;
+import de.ait.userapi.mapper.UserMapper;
 import de.ait.userapi.model.User;
 import de.ait.userapi.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -16,20 +17,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
     private final UserRepository repository;
+    private final UserMapper maper;
 
     @Override
     public List<UserResponseDto> getAllUsers() {
-        return repository.findAll()
-                .stream()
-                .map(UserServiceImpl::toResponseDto)
-                .toList();
+        return maper.toDtoList(repository.findAll());
     }
 
     @Override
     public UserResponseDto getUserById(Long id) {
         User user = repository.findById(id).get();
         if(user!=null){
-            return toResponseDto(user);
+            return maper.toDto(user);
         } else {
             throw new RuntimeException("User not found");
         }
@@ -37,17 +36,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserResponseDto addUser(UserRequestDto dto) {
-        User user = new User(null, dto.getName(), dto.getEmail(), dto.getPassword());
+        User user = maper.fromDto(dto);
         User savedUser = repository.save(user);
         if(savedUser!=null){
-            return toResponseDto(savedUser);
+            return maper.toDto(savedUser);
         } else {
             throw  new RuntimeException("Error create new user");
         }
 
     }
 
-    private static UserResponseDto toResponseDto(User user) {
-        return new UserResponseDto(user.getId(), user.getName(), user.getEmail());
-    }
 }

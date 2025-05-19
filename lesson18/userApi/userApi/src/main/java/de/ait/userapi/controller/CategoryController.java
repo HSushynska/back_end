@@ -1,8 +1,10 @@
 package de.ait.userapi.controller;
 
+import de.ait.userapi.dto.CategoryRequestDto;
+import de.ait.userapi.dto.CategoryResponseDto;
 import de.ait.userapi.dto.ProductRequestDto;
 import de.ait.userapi.dto.ProductResponseDto;
-import de.ait.userapi.model.Product;
+import de.ait.userapi.service.CategoryService;
 import de.ait.userapi.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,23 +16,23 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/products")
-public class ProductController {
-    private final ProductService service;
+@RequestMapping("/categories")
+public class CategoryController {
+    private final CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<ProductResponseDto>> getProducts(){
-        return ResponseEntity.ok().body(service.getProducts());
+    public ResponseEntity<List<CategoryResponseDto>> getCategorys(){
+        return ResponseEntity.ok().body(service.getCategories());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> getProducts(@PathVariable("id") Long id){
-        return ResponseEntity.ofNullable(service.getProductById(id));
+    public ResponseEntity<CategoryResponseDto> getCategoryById(@PathVariable("id") Long id){
+        return ResponseEntity.ofNullable(service.getCategoryById(id));
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> addProduct(@RequestBody ProductRequestDto dto){
-        ProductResponseDto saved = service.save(dto);
+    public ResponseEntity<CategoryResponseDto> addCategory(@RequestBody CategoryRequestDto dto){
+        CategoryResponseDto saved = service.save(dto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -43,3 +45,4 @@ public class ProductController {
 
 
 }
+
