@@ -4,7 +4,6 @@ import de.ait.userapi.dto.CategoryRequestDto;
 import de.ait.userapi.dto.CategoryResponseDto;
 import de.ait.userapi.mapper.CategoryMapper;
 import de.ait.userapi.model.Category;
-import de.ait.userapi.model.Product;
 import de.ait.userapi.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

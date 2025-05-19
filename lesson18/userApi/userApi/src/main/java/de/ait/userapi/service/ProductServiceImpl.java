@@ -34,7 +34,9 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public ProductResponseDto save(ProductRequestDto dto) {
         Product product = mapper.fromDto(dto);
-        Category category = categoryRepository.findById(dto.getCategoryId()).orElseThrow(() -> new RuntimeException("Category not found"));
+        Category category = categoryRepository
+                .findById(dto.getCategoryId())
+                .orElseThrow(() -> new RuntimeException("Category not found"));
         product.setCategory(category);
         Product saved = repository.save(product);
         return mapper.toDto(saved);
